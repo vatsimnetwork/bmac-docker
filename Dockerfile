@@ -1,6 +1,6 @@
-FROM unit:1.33.0-php8.3
+FROM unit:1.34.1-php8.3
 
-ARG BMAC_TAG=v4.1.3
+ARG BMAC_TAG=v4.1.4
 
 # Install PHP extensions
 RUN set -ex \
@@ -8,7 +8,7 @@ RUN set -ex \
     && apt-get install --no-install-recommends -y git libfreetype6 libfreetype6-dev libjpeg62-turbo libjpeg62-turbo-dev libpng16-16 libpng-dev libwebp7 libwebp-dev libzip4 libzip-dev unzip \
     && docker-php-ext-configure gd --with-freetype --with-jpeg --with-webp \
     && docker-php-ext-install gd opcache pcntl pdo_mysql zip \
-    && pecl install redis-6.0.2 \
+    && pecl install redis-6.1.0 \
     && docker-php-ext-enable redis \
     && apt-get purge -y --auto-remove git libfreetype6-dev libjpeg62-turbo-dev libpng-dev libwebp-dev libzip-dev \
     && rm -rf /tmp/pear /var/lib/apt/lists/*
